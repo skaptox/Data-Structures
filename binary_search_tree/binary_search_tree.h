@@ -1,11 +1,14 @@
 // Copyright (c) 2017 Oscar Albornoz.
 
+// Binary search tree
+// Visualitation: https://www.cs.usfca.edu/~galles/visualization/BST.html
+
 #ifndef BINARY_SEARCH_TREE_BINARY_SEARCH_TREE_H_
 #define BINARY_SEARCH_TREE_BINARY_SEARCH_TREE_H_
 
+#include <algorithm>
 #include <iostream>
 #include <queue>
-#include <algorithm>
 
 using std::cout;
 using std::endl;
@@ -44,7 +47,7 @@ class BinarySearchTree {
   BstNode<T> *root_;
 
   BstNode<T>* get_parent(BstNode<T>* node);
-  BstNode<T>* insert(BstNode<T>*& node, const T &value);  // NOLINT recursivaly
+  BstNode<T>* insert(BstNode<T>*& node, const T &value);  // recursivaly
   BstNode<T>* max_node(BstNode<T>* node);
   BstNode<T>* min_node(BstNode<T>* node);
 
@@ -66,7 +69,7 @@ BstNode<T>* BinarySearchTree<T>::get_parent(BstNode<T>* node) {
 }
 
 template <typename T>
-BstNode<T>* BinarySearchTree<T>::insert(BstNode<T>*& node ,const T &value) {  // NOLINT
+BstNode<T>* BinarySearchTree<T>::insert(BstNode<T>*& node, const T &value) {
   if (node == nullptr) {
     return node = new BstNode<T>(value);
   }
