@@ -3,8 +3,8 @@
 // Singly Linked List
 // Reference Image: http://www.cs.usfca.edu/~srollins/courses/cs112-f07/web/notes/linkedlists/ll2.gif
 
-#ifndef _HOME_OSCAR_PRACTICES_CPP_LINKED_LIST_LIST_H_
-#define _HOME_OSCAR_PRACTICES_CPP_LINKED_LIST_LIST_H_
+#ifndef LINKED_LIST_LIST_H_
+#define LINKED_LIST_LIST_H_
 
 #include <iostream>
 #include "./node.h"
@@ -170,7 +170,7 @@ List<T>::~List() {
   }
 }
 
-#endif  // _HOME_OSCAR_PRACTICES_CPP_LINKED_LIST_LIST_H_
+#endif  // LINKED_LIST_LIST_H_
 
 
 
