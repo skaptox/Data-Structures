@@ -15,7 +15,6 @@ bool comparar(T a1, T a2, cmp compare = cmp()) {
   return compare(a1,a2);
 }
 
-
 int main() {
   PriorityQueue<pair<int, string>> mypq(50);
   mypq.push(make_pair(30, "Thirty"));
