@@ -10,38 +10,49 @@
 
 using namespace std;  // NOLINT
 
+template<typename T>
+void print_queue(T& q) {
+    while(!q.empty()) {
+        std::cout << q.top() << " ";
+        q.pop();
+
+    }
+    std::cout << '\n';
+}
+
 int main() {
-  string num[10] = {"zero", "one", "two", "three", "four", "five", "six",
-  "seven", "eight", "nine"};
+    PriorityQueue<int> q(10);
 
-  const int size = 6;
-  int arr[size] = {1,2,3,4,5,6};
+    for(int n : {1,8,5,6,3,4,0,9,7,2}) {
+        q.push(n);
+    }
 
-  heapify(arr, size);
-  cout << "Heapify: " << endl;
-  for (int i = 0; i < size; ++i) {
-    cout << arr[i] << ", ";
-  }
+    print_queue(q);
+
+    PriorityQueue<int, std::greater<int> > q2(10);
+
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        q2.push(n);
+
+    print_queue(q2);
+
+    // Using lambda to compare elements.
+    auto cmp = [](int left, int right) { return (left ^ 1) < (right ^ 1);};
+    PriorityQueue<int, decltype(cmp)> q3(10,cmp);
+
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        q3.push(n);
+
+    cout << "Sorting array: " << endl;
+    int arr[10] = {1,8,5,6,3,4,0,9,7,2};
+    heap_sort(arr,10,[](int f,int s){return f>s;});
+    for (int i = 0; i < 10; ++i) {
+      cout << arr[i] << ", ";
+    }
+
+    cout << endl;
 
 
-  /*
-
-  PriorityQueue<pair<int, string>> mypq(50,
-    [](const pair<int, string> &o1, const pair<int, string> &o2)
-    { return o1.first > o2.first;});
-
-  for (int i = 0; i < 10; ++i) {
-    mypq.push(make_pair(i, num[i]));
-  }
-
-  std::cout << "Popping out elements..." << endl;
-  while (!mypq.empty()) {
-     std::cout << mypq.top().first << ", ";
-     mypq.pop();
-  }
-
-   */
-  std::cout << '\n';
 
 
   return 0;
