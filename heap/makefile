@@ -1,7 +1,7 @@
 TARGET = test
 SRCS = main.cc
 
-CXX = clang++
+CXX = g++
 CXXFLAGS= -std=c++14 -Wall
 
 OBJS = $(SRCS:.cc=.o)
