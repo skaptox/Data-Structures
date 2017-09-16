@@ -3,9 +3,6 @@
 #ifndef LINKED_LIST_NODE_H_
 #define LINKED_LIST_NODE_H_
 
-template <typename T>
-class List;
-
 template<typename T>
 class Node {
  public:
@@ -15,8 +12,6 @@ class Node {
   inline Node* next() { return next_; }
   inline void set_value(T *val) {value_ = val;}
   inline void set_next(Node *elem) {next_ = elem;}
-  friend class List<T>;
-
  private:
   T value_;
   Node *next_;

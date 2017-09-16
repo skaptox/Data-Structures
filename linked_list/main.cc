@@ -1,7 +1,7 @@
 // Copyright (c) 2017 Oscar Albornoz. All rights reserved.
 
 #include <iostream>
-#include "list.h"
+#include "./list.h"
 
 using std::cout;
 using std::endl;
@@ -58,6 +58,14 @@ int main() {
   for (int i = 0; i < my_list.size(); ++i)
     cout << my_list.at(i);
   cout <<  endl;
+
+  cout << "Testing reverse: ";
+  my_list.reverse();
+
+  for (int i = 0; i < my_list.size(); ++i)
+    cout << my_list.at(i);
+  cout <<  endl;
+
 
   cout << "Testing erase: ";
   while (my_list.size() - 1)

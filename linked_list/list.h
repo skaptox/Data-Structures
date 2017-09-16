@@ -7,36 +7,38 @@
 #define LINKED_LIST_LIST_H_
 
 #include <iostream>
+#include <utility>
 #include "./node.h"
 
 template<typename T>
 class List {
  public:
-  List() : head(nullptr), tail(nullptr), size_(0) {}
+  List() : head_(nullptr), tail_(nullptr), size_(0) {}
   ~List();
   inline bool is_empty() const {return size_ == 0;}
   inline size_t size() const {return size_;}
-  inline T back() const { return tail->value(); }
-  inline T front() const { return head->value(); }
+  inline T back() const { return tail_->value(); }
+  inline T front() const { return head_->value(); }
 
-  T& at(const size_t &pos);
-  void erase(const size_t &pos);
-  void insert(const size_t &pos, const T &val);
+  T& at(size_t pos);
+  void erase(size_t pos);
+  void insert(size_t pos, const T &val);
   void pop_back();
   void pop_front();
   void push_back(const T &val);
   void push_front(const T &val);
+  void reverse();
 
  private:
-  Node<T> *head;
-  Node<T> *tail;
+  Node<T> *head_;
+  Node<T> *tail_;
   size_t size_;
 };
 
 template<typename T>
-T& List<T>::at(const size_t &pos) {
+T& List<T>::at(size_t pos) {
   if (pos < size()) {
-    Node<T> *current = head;
+    Node<T> *current = head_;
     for (int i = 0; i < pos && current->next(); ++i) {
       current = current->next();
     }
@@ -49,14 +51,14 @@ T& List<T>::at(const size_t &pos) {
 }
 
 template<typename T>
-void List<T>::erase(const size_t &pos) {
+void List<T>::erase(size_t pos) {
   if (pos < size()) {
     if (pos == 0) {
       pop_front();
     } else if (pos == size()- 1) {
       pop_back();
       } else {
-        Node<T> *prev = head;
+        Node<T> *prev = head_;
 
         for (int i = 1; i < pos && prev->next(); ++i)
           prev = prev->next();
@@ -74,12 +76,12 @@ void List<T>::erase(const size_t &pos) {
 }
 
 template<typename T>
-void List<T>::insert(const size_t &pos, const T &val) {
+void List<T>::insert(size_t pos, const T &val) {
     if (pos < size()) {
       if (pos == 0) {
         push_front(val);
       } else {
-        Node<T> *prev = head;
+        Node<T> *prev = head_;
 
         for (int i = 1; i < pos && prev->next(); ++i)
           prev = prev->next();
@@ -99,13 +101,13 @@ void List<T>::insert(const size_t &pos, const T &val) {
 template<typename T>
 void List<T>::pop_back() {
   if (!is_empty()) {
-    Node<T> *prev = head;
-    while (prev->next() && prev->next() != tail) {
+    Node<T> *prev = head_;
+    while (prev->next() && prev->next() != tail_) {
       prev = prev->next();
     }
-    delete tail;
-    tail = prev;
-    tail->set_next(nullptr);
+    delete tail_;
+    tail_ = prev;
+    tail_->set_next(nullptr);
     size_--;
   } else {
     std::cerr << "Error: List is empty" << std::endl;
@@ -116,9 +118,9 @@ void List<T>::pop_back() {
 template<typename T>
 void List<T>::pop_front() {
   if (!is_empty()) {
-    Node<T> *first_node = head;
+    Node<T> *first_node = head_;
 
-    head = head->next();
+    head_ = head_->next();
     delete first_node;
     size_--;
 
@@ -133,13 +135,13 @@ void List<T>::push_back(const T &val) {
     Node<T> *new_node = new Node<T>(val);
 
     if (is_empty()) {
-      head = tail = new_node;  // Both point to single node
-    } else if (head == tail) {
-        head->set_next(new_node);  // First node point to second node
-        tail = head->next();  // Tail point to second node
+      head_ = tail_ = new_node;  // Both point to single node
+    } else if (head_ == tail_) {
+        head_->set_next(new_node);  // First node point to second node
+        tail_ = head_->next();  // Tail point to second node
       } else {
-        tail->set_next(new_node);  // Last node point to new last node
-        tail = tail->next();  // Tail point to new last node
+        tail_->set_next(new_node);  // Last node point to new last node
+        tail_ = tail_->next();  // Tail point to new last node
         }
     size_++;
   }
@@ -149,19 +151,33 @@ void List<T>::push_front(const T &val) {
   Node<T> *new_node = new Node<T>(val);
 
   if (is_empty()) {
-    tail = new_node;
+    tail_ = new_node;
   } else {
-    new_node->set_next(head);
+    new_node->set_next(head_);
   }
 
-  head = new_node;
+  head_ = new_node;
   size_++;
+}
+
+template<typename T>
+void List<T>::reverse() {
+  Node<T> *current = head_;
+  Node<T> *prev = nullptr;
+
+  while (current) {
+    Node<T> *next = current->next();
+    current->set_next(prev);
+    prev = current;
+    current = next;
+  }
+  std::swap(head_, tail_);
 }
 
 template<typename T>
 List<T>::~List() {
   if (!is_empty()) {
-    Node<T> *prev = head;
+    Node<T> *prev = head_;
     while (prev) {
       Node<T> *current = prev->next();
       delete prev;
