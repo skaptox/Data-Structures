@@ -4,8 +4,8 @@
 // Reference Image: https://goo.gl/4DMkrH
 
 
-#ifndef _HOME_OSCAR_PRACTICES_CPP_HASH_TABLE_HASH_TABLE_H_
-#define _HOME_OSCAR_PRACTICES_CPP_HASH_TABLE_HASH_TABLE_H_
+#ifndef HASH_TABLE_HASH_TABLE_H_
+#define HASH_TABLE_HASH_TABLE_H_
 
 #include <iostream>
 #include <functional>
@@ -185,4 +185,4 @@ HashTable<TKey, TValue>::~HashTable() {
   delete [] data_;
 }
 
-#endif  // _HOME_OSCAR_PRACTICES_CPP_HASH_TABLE_HASH_TABLE_H_
+#endif  // HASH_TABLE_HASH_TABLE_H_

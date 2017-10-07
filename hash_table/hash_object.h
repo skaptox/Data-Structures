@@ -1,7 +1,7 @@
 // Copyright (c) 2017 Oscar Albornoz. All rights reserved.
 
-#ifndef _HOME_OSCAR_PRACTICES_CPP_HASH_TABLE_HASH_OBJECT_H_
-#define _HOME_OSCAR_PRACTICES_CPP_HASH_TABLE_HASH_OBJECT_H_
+#ifndef HASH_TABLE_HASH_OBJECT_H_
+#define HASH_TABLE_HASH_OBJECT_H_
 
 #include <iostream>
 
@@ -28,4 +28,4 @@ class HashObject {
   HashObject *next_;
 };
 
-#endif  // _HOME_OSCAR_PRACTICES_CPP_HASH_TABLE_HASH_OBJECT_H_
+#endif  // HASH_TABLE_HASH_OBJECT_H_

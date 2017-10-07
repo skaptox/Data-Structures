@@ -18,7 +18,7 @@ struct BstNode {
   T value;
   BstNode *left;
   BstNode *right;
-  explicit BstNode(T val, BstNode * l = nullptr, BstNode * r = nullptr) :
+  explicit BstNode(const T &val, BstNode * l = nullptr, BstNode * r = nullptr) :
     value(val), left(l), right(r) {}
 };
 
@@ -51,7 +51,7 @@ class BinarySearchTree {
   BstNode<T>* max_node(BstNode<T>* node);
   BstNode<T>* min_node(BstNode<T>* node);
 
-  void delete_node(BstNode<T>* node);
+  void delete_nodes(BstNode<T>* node);
 
   size_t count(BstNode<T>* node);
   size_t height(BstNode<T>* node);
@@ -108,12 +108,12 @@ size_t BinarySearchTree<T>::count(BstNode<T>* node) {
 }
 
 template <typename T>
-void BinarySearchTree<T>::delete_node(BstNode<T>* node) {
+void BinarySearchTree<T>::delete_nodes(BstNode<T>* node) {
   if (node->left) {
-    delete_node(node->left);
+    delete_nodes(node->left);
   }
   if (node->right) {
-    delete_node(node->right);
+    delete_nodes(node->right);
   }
   delete node;
 }
@@ -154,7 +154,7 @@ BstNode<T>* BinarySearchTree<T>::insert(const T &value) {
       return nullptr;
     }
     if (value < node->value) {
-      if (node->left == nullptr) {
+      if (node->left == nullptr) {.
         return node->left = new_node;
       }
       node = node->left;
@@ -259,10 +259,7 @@ void BinarySearchTree<T>::remove(const T &value) {
 template <typename T>
 BinarySearchTree<T>::~BinarySearchTree() {
   if (root_)
-    delete_node(root_);
+    delete_nodes(root_);
 }
-
-
-
 
 #endif  // BINARY_SEARCH_TREE_BINARY_SEARCH_TREE_H_

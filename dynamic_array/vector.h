@@ -1,7 +1,7 @@
 // Copyright (c) 2017 Oscar Albornoz.
 
-#ifndef _HOME_OSCAR_PRACTICES_CPP_VECTOR_VECTOR_H_
-#define _HOME_OSCAR_PRACTICES_CPP_VECTOR_VECTOR_H_
+#ifndef DYNAMIC_ARRAY_VECTOR_H_
+#define DYNAMIC_ARRAY_VECTOR_H_
 
 #include <math.h>
 #include <iostream>
@@ -213,4 +213,4 @@ void Vector<T>::remove_if(F function) {
 
 }  // namespace sk
 
-#endif  // _HOME_OSCAR_PRACTICES_CPP_VECTOR_VECTOR_H_
+#endif  // DYNAMIC_ARRAY_VECTOR_H_

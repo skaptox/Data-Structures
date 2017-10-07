@@ -1,7 +1,7 @@
 // Copyright (c) 2017 Oscar Albornoz. All rights reserved.
 
-#ifndef _HOME_OSCAR_PRACTICES_CPP_QUEUE_LINKED_LIST_NODE_H_
-#define _HOME_OSCAR_PRACTICES_CPP_QUEUE_LINKED_LIST_NODE_H_
+#ifndef QUEUE_LINKED_LIST_NODE_H_
+#define QUEUE_LINKED_LIST_NODE_H_
 
 template <typename T>
 class List;
@@ -23,4 +23,4 @@ class Node {
   Node *next_;
 };
 
-#endif  // _HOME_OSCAR_PRACTICES_CPP_QUEUE_LINKED_LIST_NODE_H_
+#endif  // QUEUE_LINKED_LIST_NODE_H_

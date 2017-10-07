@@ -2,11 +2,11 @@
 
 // Reference Image : https://screenshots.firefoxusercontent.com/images/54290b3c-a80a-411c-9d05-fe951f3bd30f.png
 
-#ifndef _HOME_OSCAR_PRACTICES_CPP_QUEUE_LINKED_LIST_QUEUE_LINKED_LIST_H_
-#define _HOME_OSCAR_PRACTICES_CPP_QUEUE_LINKED_LIST_QUEUE_LINKED_LIST_H_
+#ifndef QUEUE_LINKED_LIST_QUEUE_LINKED_LIST_H_
+#define QUEUE_LINKED_LIST_QUEUE_LINKED_LIST_H_
 
 #include <iostream>
-#include "node.h"
+#include "./node.h"
 
 template <typename T>
 class Queue {
@@ -67,4 +67,4 @@ Queue<T>::~Queue() {
 }
 
 
-#endif  // _HOME_OSCAR_PRACTICES_CPP_QUEUE_LINKED_LIST_QUEUE_LINKED_LIST_H_
+#endif  // QUEUE_LINKED_LIST_QUEUE_LINKED_LIST_H_
